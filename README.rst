@@ -196,6 +196,20 @@ Lost mode is slightly different to the "Play Sound" functionality in that it all
     api.iphone.lost_device(phone_number, message)
 
 
+
+Find My Friends
+==============
+
+The Find My Friends service lets you locate the friends you are following using the 'Find My' (FKA 'Find My Friends') app.
+
+Locations
+********
+
+Returns the your friends' last known locations. You must install and initialize the 'Find My' (FKA 'Find My Friends') app on an iOS device, signing in with your credentials. In addition, your friends must be sharing their location with your account.
+
+>>> api.friends.locations
+
+
 Calendar
 ========
 
