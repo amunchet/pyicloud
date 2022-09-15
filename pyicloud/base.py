@@ -570,7 +570,8 @@ class PyiCloudService:
         """
         Gets the 'Friends' service
         """
-        service_root = self._get_webservice_url("fmf")
+        # service_root = self._get_webservice_url("fmf")
+        service_root = self._get_webservice_url("findme")
         return FindFriendsService(service_root, self.session, self.params)
     
     @property
