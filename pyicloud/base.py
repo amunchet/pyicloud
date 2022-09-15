@@ -18,6 +18,7 @@ from pyicloud.exceptions import (
 )
 from pyicloud.services import (
     FindMyiPhoneServiceManager,
+    FindFriendsService,
     CalendarService,
     UbiquityService,
     ContactsService,
@@ -67,7 +68,8 @@ class PyiCloudSession(Session):
         # Charge logging to the right service endpoint
         callee = inspect.stack()[2]
         module = inspect.getmodule(callee[0])
-        request_logger = logging.getLogger(module.__name__).getChild("http")
+        name = getattr(module, "__name__") if hasattr(module, "__name__") else __name__
+        request_logger = logging.getLogger(name).getChild("http")
         if self.service.password_filter not in request_logger.filters:
             request_logger.addFilter(self.service.password_filter)
 
@@ -563,6 +565,14 @@ class PyiCloudService:
             self._files = UbiquityService(service_root, self.session, self.params)
         return self._files
 
+    @property
+    def friends(self):
+        """
+        Gets the 'Friends' service
+        """
+        service_root = self._get_webservice_url("fmf")
+        return FindFriendsService(service_root, self.session, self.params)
+    
     @property
     def photos(self):
         """Gets the 'Photo' service."""
