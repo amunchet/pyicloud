@@ -210,6 +210,33 @@ Returns the your friends' last known locations. You must install and initialize 
 >>> api.friends.locations
 
 
+>>> contact_id = api.friends.contact_id_for("example@mail.com")
+>>> api.friends.location_of(contact_id)
+
+Note: contact_id = following['id'].  Since this is an private Apple API, it might break later
+
+Followers
+********
+
+Returns a list of your friends who you share your location with.
+
+>>> api.friends.followers
+
+
+Following
+********
+
+Returns a list of your friends whose location you follow.
+
+>>> api.friends.following
+
+Contact Details
+********
+
+Returns a list of your friends' contact details.
+
+>>> api.friends.contact_details
+
 Calendar
 ========
 
